@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Geist_Mono, Geist } from "next/font/google";
 
 import "./globals.css";
+import { siteConfig } from "@/config/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,17 +16,34 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: {
-    template: "%s | NextStarter",
-    default: "NextStarter",
+  openGraph: {
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    title: siteConfig.name,
+    url: siteConfig.url,
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
+    description: siteConfig.description,
+    creator: siteConfig.author.name,
     card: "summary_large_image",
+    title: siteConfig.name,
+  },
+  authors: [
+    {
+      name: siteConfig.author.name,
+      url: siteConfig.author.url,
+    },
+  ],
+  title: {
+    template: `%s - ${siteConfig.name}`,
+    default: siteConfig.name,
   },
   appleWebApp: {
-    title: "NextStarter",
+    title: siteConfig.name,
   },
-  description: "A Next.js Starter Template",
+  description: siteConfig.description,
 };
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
