@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  appleWebApp: {
+    title: "NextStarter",
+  },
   description: "Latest Next Starter Template",
   title: "NextStarter",
 };
