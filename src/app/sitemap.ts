@@ -1,4 +1,6 @@
 import type { MetadataRoute } from "next";
+
+import { siteConfig } from "@/config/site";
 //? To preview the output sitemap.xml file in the browser, you can use the following URL:
 //! http://localhost:3000/sitemap.xml
 
@@ -12,16 +14,16 @@ const sitemap = (): MetadataRoute.Sitemap => {
   const { posts }: BlogPostsResponse = await response.json();
 
   const postEntries: MetadataRoute.Sitemap = posts.map(({ id }) => ({
-    url: `${process.env.NEXT_PUBLIC_BASE_URL}/posts/${id}`,
-    lastModified: new Date(post.updatedAt),
+    url: `${env.NEXT_PUBLIC_BASE_URL}/posts/${id}`,
+    lastModified: new Date(post.updatedAt).toISOString(),
     changeFrequency:,
     priority:
   }));
   */
   return [
     {
-      url: process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000",
-      lastModified: new Date(),
+      lastModified: new Date().toISOString(),
+      url: siteConfig.url,
     },
     //  ...postEntries,
   ];
