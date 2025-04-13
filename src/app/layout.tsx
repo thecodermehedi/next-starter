@@ -15,14 +15,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  title: {
+    template: "%s | NextStarter",
+    default: "NextStarter",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
   appleWebApp: {
     title: "NextStarter",
   },
-  description: "Latest Next Starter Template",
-  title: "NextStarter",
+  description: "A Next.js Starter Template",
 };
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
+  //? Uncomment the line below to see error ui of global-error.tsx
+  // throw new Error("PREVIEW_GLOBAL_ERROR_LAYOUT_UI");
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
