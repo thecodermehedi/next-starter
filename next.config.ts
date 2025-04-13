@@ -1,4 +1,6 @@
 import type { NextConfig } from "next";
+import "@/env";
+// import { env } from "@/env";
 
 const nextConfig: NextConfig = {
   // output: "standalone",
@@ -10,10 +12,14 @@ const nextConfig: NextConfig = {
   //   return [
   //     {
   //       source: "/api/:path*",
-  //       destination: `${process.env.API_URL}/:path*`,
+  //       destination: `${env.API_URL}/:path*`,
   //     },
   //   ];
   // },
+
+  // Already doing linting and typechecking as separate tasks in CI
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
 };
 
 export default nextConfig;
